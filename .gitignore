@@ -1,4 +1,5 @@
 venv
+bananalyzervenv
 .venv
 *.pyc
 .vscode
