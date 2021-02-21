@@ -8,6 +8,8 @@ body {
 
 .card-img-topBanana {
     padding-top: 20px;
+    width: 100%;
+    height:auto;
 }
 
 .card-titleBanana {
@@ -16,6 +18,8 @@ body {
 
 .card-img-topAvocado {
     padding-top: 20px;
+    width: 100%;
+    height:auto;
 }
 
 .card-titleAvocado {
@@ -24,6 +28,8 @@ body {
 
 .card-img-topStrawberries {
     padding-top: 20px;
+    width: 100%;
+    height:auto;
 }
 
 .card-titleStrawberries {
