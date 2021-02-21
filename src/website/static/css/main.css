@@ -1,11 +1,31 @@
-body {
-    padding-top: 56px;
-}
-
 .display-3 {
     text-align: center;
 }
 
-.card-img-top {
-    text-align: center;
+body {
+    padding-top: 56px;
+}
+
+.card-img-topBanana {
+    padding-top: 20px;
+}
+
+.card-titleBanana {
+    padding-top: 30px;
+}
+
+.card-img-topAvocado {
+    padding-top: 20px;
+}
+
+.card-titleAvocado {
+    padding-top: 44px;
+}
+
+.card-img-topStrawberries {
+    padding-top: 20px;
+}
+
+.card-titleStrawberries {
+    padding-top: 80px;
 }
