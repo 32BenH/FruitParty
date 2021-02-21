@@ -1,33 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 void main() {
-  runApp(Bananalyzer());
+  runApp(BananalyzerApp());
 }
 
-class Bananalyzer extends StatelessWidget {
-  WebViewController _controller;
-
+class BananalyzerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.white);
     return MaterialApp(
-      title: 'Bananalyzer',
+      title: "Bananalyzer",
       theme: ThemeData(
-        //  primarySwatch: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SafeArea(
+      home: BananalyzerHomePage(title: "Bananalyzer Home"),
+    );
+  }
+}
+
+class BananalyzerHomePage extends StatefulWidget {
+  BananalyzerHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _BananalyzerHomePageState createState() => _BananalyzerHomePageState();
+}
+
+class _BananalyzerHomePageState extends State<BananalyzerHomePage> {
+  WebViewController _controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Bananalyzer"),
+        leading: GestureDetector(
+          onTap: () async {
+            await Permission.camera.request();
+          },
+          child: Icon(Icons.camera),
+        ),
+      ),
+      body: SafeArea(
         child: WebView(
-          initialUrl: 'http://192.168.1.25:5000/',
+          initialUrl: "https://www.bananalyzer.tech/",
           onWebViewCreated: (WebViewController webViewController) {
             _controller = webViewController;
           },
           javascriptMode: JavascriptMode.unrestricted,
           gestureNavigationEnabled: true,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          _controller.clearCache();
+        },
+        tooltip: "Clear cache",
+        child: Icon(Icons.refresh),
       ),
     );
   }

@@ -74,10 +74,10 @@ def bananalyze(img):
 
     color_score = np.sum(yellow_mask) / np.sum(total_mask)
 
-    cv2.imshow('orig', img)
-    cv2.imshow('yellow_mask', yellow_mask)
-    cv2.imshow('total_mask', total_mask)
-    cv2.waitKey(0)
+    #cv2.imshow('orig', img)
+    #cv2.imshow('yellow_mask', yellow_mask)
+    #cv2.imshow('total_mask', total_mask)
+    #cv2.waitKey(0)
 
     # Image classification
     classification, class_score = RunInference(img)
