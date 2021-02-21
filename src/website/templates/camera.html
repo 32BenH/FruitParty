@@ -5,6 +5,13 @@
         <title>Title</title>
     </head>
     <body>
+            <h1>Welcome to Bananalyzer</h1>
+            <ul>
+                <li><a href="{{ url_for('main') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li>Camera</li>
+            </ul>
+            <h2>Home</h2>
     <video id="video" width="640" height="480" autoplay></video>
     <button id="snap">Snap Photo</button>
     <canvas id="canvas" width="640" height="480"></canvas>
