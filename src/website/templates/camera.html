@@ -44,7 +44,10 @@
       </div>
         <canvas id="canvas" class="center" width="640" height="480"></canvas>
           <canvas id="canvas" class="d-none"></canvas>
-      </div>
+          <h2 id='results'class="center"></h2>
+          <h2 id='score'class="center"></h2>
+
+      <form method="POST" enctype="multipart/form-data" id="imageForm" action='/camera'></form>
     </body>
 
     <script>
@@ -57,6 +60,7 @@
             console.log("webcam started");
             $('#bananalyze').hide();
             $('#retake').hide();
+            $('#results').hide();
         })
         .catch(err => {
             console.log(err);
@@ -80,6 +84,47 @@
 
         $( "#retake" ).click(function() {
             window.location.href = '/camera';
+        });
+
+        $( "#bananalyze" ).click(function() {
+            console.log("Uploading...")
+            var form = document.getElementById('imageForm');
+            var formData = new FormData(form);
+            formData.append("file", canvasElement.toDataURL());
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "/camera");
+
+            // check when state changes, 
+            xmlhttp.onreadystatechange = function() {
+
+            if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var score = xmlhttp.responseText;
+                var text = '';
+
+                if (parseFloat(score) <= 0.333)
+                {
+                  text = 'Jinkys, you got some rotten nanners!';
+                }
+                else if (parseFloat(score) > 0.333 && parseFloat(score) <= 0.666)
+                {
+                  text = 'Neat-O! Your nanners are good for 3-4 more days!';
+                }
+                else {
+                  text = "Good pickin' pal! You got some nice nanners that will last you about a week!";
+                }
+
+                $('#results').text(text);
+                $('#score').text('Banana score: ' + parseFloat(score).toFixed(2));
+                $('#bananalyze').slideUp(1000);
+                $('#retake').slideUp(1000);
+                $('#results').slideUp(1000, function(){
+                  $('#results').show();
+                });
+                }
+            }
+
+            xmlhttp.send(formData);
+            //console.log(formData.get('file'));
         });
     </script>
 </html>

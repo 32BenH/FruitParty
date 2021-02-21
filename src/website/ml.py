@@ -56,10 +56,10 @@ def bananalyze(img):
 
     print(score)
 
-    cv2.imshow('orig', img)
-    cv2.imshow('yellow_mask', yellow_mask)
-    cv2.imshow('total_mask', total_mask)
-    cv2.waitKey(0)
+    #cv2.imshow('orig', img)
+    #cv2.imshow('yellow_mask', yellow_mask)
+    #cv2.imshow('total_mask', total_mask)
+    #cv2.waitKey(0)
 
     return score
 
