@@ -11,9 +11,6 @@ def about():
 @app.route('/camera')
 def camera():
     return render_template('camera.html')
-@app.route('/picture')
-def picture():
-    return render_template('picture.html')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")

@@ -5,10 +5,19 @@
         <title>Camera Capture</title>
     </head>
     <body>
-        <form action="/picture" method="GET">
-            <input type="file" id="img" onchange="this.form.submit()" accept="image/*" capture="environment">
+        <form action="">
+            <input type="file" id="inputImage" onchange="loadFile(event)" accept="image/*" capture="environment">
         </form>
     </body>
     <script>
+        var loadFile = function(event) {
+            try {
+                var inputImage = document.getElementById('inputImage');
+                var newImage = new Image;
+                newImage.src = URL.createObjectURL(event.target.files[0]);
+                document.body.appendChild(newImage)
+            } catch (error) {}
+	        
+        };
     </script>
 </html>
