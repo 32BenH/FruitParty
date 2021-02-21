@@ -36,6 +36,12 @@
     <button id="snap" class="btn-primary">Snap Photo</button>
     <button id="flip" class="btn-primary">Flip Camera</button>
     <canvas id="canvas" width="640" height="480"></canvas>
+        <title>Camera Capture</title>
+    </head>
+    <body>
+        <form action="">
+            <input type="file" id="inputImage" onchange="loadFile(event)" accept="image/*" capture="environment">
+        </form>
     </body>
     
     <video id="webcam" autoplay playsinline width="640" height="480"></video>
@@ -64,5 +70,4 @@
             webcam.start();
         });
     </script>
-
 </html>

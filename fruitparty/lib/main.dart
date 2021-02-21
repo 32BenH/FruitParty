@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
@@ -20,7 +21,7 @@ class Bananalyzer extends StatelessWidget {
       ),
       home: SafeArea(
         child: WebView(
-          initialUrl: 'https://en.wikipedia.org/wiki/Kraken',
+          initialUrl: 'http://192.168.1.25:5000/',
           onWebViewCreated: (WebViewController webViewController) {
             _controller = webViewController;
           },
