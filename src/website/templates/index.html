@@ -26,39 +26,15 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('about') }}">About</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('camera') }}">Camera</a>
+            </li>
               </li>
           </ul>
         </div>
       </div>
     </nav>
-    <!-- Page Content -->
-  <div class="container">
+    </body>
 
-    <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-      <h1 class="display-3">Welcome to Bananalyzer!</h1>
-      <p class="lead">Select the produce you would like to analyze by clicking the "Produce Data" button. Snap a picture and your produce data will automatically populate!</p>
-    </header>
-
-    <!-- Page Features -->
-    <div class="row text-center">
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://images.immediate.co.uk/production/volatile/sites/30/2017/01/Bananas-218094b-scaled.jpg?quality=90&resize=960%2C872" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Banana</h4>
-            <p class="card-text">$0.55/lb</p>
-          </div>
-          <div class="card-footer">
-            <a href="{{ url_for('camera') }}" class="btn btn-primary">Run Banalysis</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.row -->
-
-  </div>
-  <!-- /.container -->
-</body>
-</html>
+    </html>
+    
