@@ -5,9 +5,8 @@
         <title>Camera Capture</title>
     </head>
     <body>
-        <form action="/image.png">
-            <label for="capture">Capture</label>
-            <input type="file" id="capture" accept="image/*" capture="environment">
+        <form action="/picture" method="GET">
+            <input type="file" id="img" onchange="this.form.submit()" accept="image/*" capture="environment">
         </form>
     </body>
     <script>

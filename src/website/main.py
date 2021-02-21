@@ -5,12 +5,15 @@ app = Flask(__name__)
 @app.route('/')
 def main():
     return render_template('main.html')
-@app.route('/About')
+@app.route('/about')
 def about():
     return render_template('about.html')
-@app.route('/Camera')
+@app.route('/camera')
 def camera():
     return render_template('camera.html')
+@app.route('/picture')
+def picture():
+    return render_template('picture.html')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
