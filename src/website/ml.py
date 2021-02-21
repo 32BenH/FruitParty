@@ -1,7 +1,27 @@
 import cv2
 import numpy as np
 import os
+import onnxruntime as rt
 
+
+def RunInference(img):
+    # Prepare the img for the model
+    img = cv2.resize(img, (227, 227))
+    img = np.moveaxis(img, -1,0)
+    img = img[np.newaxis,:,:,:]
+
+    # Run inference
+    sess = rt.InferenceSession("src/website/ml/model.onnx")
+    input_name = sess.get_inputs()[0].name
+    label_name = sess.get_outputs()[0].name
+    pred = sess.run([label_name], {input_name: img.astype(np.float32)})[0]
+
+    # Determine score
+    classes = ['fresh', 'rotten']
+    pred_class = classes[np.argmax(pred)]
+    pred_score = pred[0][np.argmax(pred)]
+
+    return pred_class, pred_score
 
 def GetNannerMask(img):
     # Lab image color segmentation
@@ -52,20 +72,29 @@ def bananalyze(img):
     yellow_mask = FTSaliency(img)
     total_mask = GetNannerMask(img)
 
-    score = np.sum(yellow_mask) / np.sum(total_mask)
-
-    print(score)
+    color_score = np.sum(yellow_mask) / np.sum(total_mask)
 
     cv2.imshow('orig', img)
     cv2.imshow('yellow_mask', yellow_mask)
     cv2.imshow('total_mask', total_mask)
     cv2.waitKey(0)
 
+    # Image classification
+    classification, class_score = RunInference(img)
+    #print('classification: ', classification)
+    #print('class_score: ', class_score)
+
+    # Determine score
+    if classification is 'fresh':
+        score = np.sqrt(1 - (1 / (7*color_score + 1)))
+    else:
+        score = color_score
+
     return score
 
 
 if __name__ == "__main__":
-    folder = 'C:/Users/remma/Downloads/archive/dataset/train/rottenbanana/'
+    folder = 'C:/Users/remma/Downloads/archive/dataset/test/combined/'
     for filename in os.listdir(folder):
         img = cv2.imread(os.path.join(folder,filename))
         if img is not None:
@@ -74,3 +103,5 @@ if __name__ == "__main__":
             #img = cv2.resize(image, (600, 800))
 
             score = bananalyze(img)
+
+            #print('pickin_score: ', score)

@@ -3,3 +3,4 @@ pylint
 numpy
 opencv-python
 opencv-contrib-python
+onnxruntime

@@ -1,0 +1,23 @@
+clc; clear; commandwindow;
+
+imds = imageDatastore('data', ...
+    'IncludeSubfolders',true, ...
+    'LabelSource','foldernames');
+
+[imdsTrain,imdsValidation] = splitEachLabel(imds,0.7,'randomized');
+
+numTrainImages = numel(imdsTrain.Labels);
+idx = randperm(numTrainImages,16);
+figure
+for i = 1:16
+    subplot(4,4,i)
+    I = readimage(imdsTrain,idx(i));
+    imshow(I)
+end
+
+net = alexnet;
+analyzeNetwork(net);
+
+inputSize = net.Layers(1).InputSize;
+
+layersTransfer = net.Layers(1:end-3);
