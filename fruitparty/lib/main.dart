@@ -20,7 +20,7 @@ class Bananalyzer extends StatelessWidget {
       ),
       home: SafeArea(
         child: WebView(
-          initialUrl: 'https://en.wikipedia.org/wiki/Kraken',
+          initialUrl: 'http://192.168.1.24:5000/',
           onWebViewCreated: (WebViewController webViewController) {
             _controller = webViewController;
           },
