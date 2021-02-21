@@ -1,24 +1,23 @@
-h1 {
-    border: 2px #eee solid;
-    color: rgb(255, 255, 255);
-    background-color: black;
+.display-3 {
     text-align: center;
-    padding: 10px;
 }
 
-h2 {
-    color: rgb(255, 255, 255);
-    padding: 10px 10px;
+.lead {
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.card-text {
+    text-align: center;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.display-4 {
+    text-align: center;
 }
 
 body {
-    background-color: grey;
-}
-
-p {
-    border: 2px #eee solid;
-    padding: 10px 15px;
-    background-color: white;
-    text-align: center;
-    padding: 10px;
+    padding-top: 56px;
 }
